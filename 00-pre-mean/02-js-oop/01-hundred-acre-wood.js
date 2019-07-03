@@ -39,3 +39,5 @@ kanga.north = eeyore;
 var heffolumps = { character: "Heffolumps" };
 heffolumps.west = kanga.north;
 kanga.north.east = heffolumps; 
+
+
