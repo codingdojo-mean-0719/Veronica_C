@@ -119,13 +119,14 @@
 // }
 // console.log(dojo);
 //After Hosting by the Interpreter
-dojo = "san jose"; // this act like var stays at top
-console.log(dojo); // displays the above -- 'San Jose'
-learn(); //goes above
-function learn() {
-	dojo = "seattle"; // declares inside func 
-	console.log(dojo); // displays -- 'Seattle'
-	var dojo = "burbank";
-	console.log(dojo); //displays -- 'Burbank'
-}
-console.log(dojo); // calls the global -- 'San Jose'
+// dojo = "san jose"; // this act like var stays at top
+// console.log(dojo); // displays the above -- 'San Jose'
+// learn(); //goes above
+// function learn() {
+// 	dojo = "seattle"; // declares inside func 
+// 	console.log(dojo); // displays -- 'Seattle'
+// 	var dojo = "burbank";
+// 	console.log(dojo); //displays -- 'Burbank'
+// }
+// console.log(dojo); // calls the global -- 'San Jose'
+
