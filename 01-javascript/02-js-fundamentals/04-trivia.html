@@ -10,11 +10,39 @@
    
     <script>
         $(document).ready(function (){
-            $.get("https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple", game)
-            function game(data) {
+            $.get("https://opentdb.com/api.php?amount=10&category=20&difficulty=medium&type=multiple", 
+            function (data) {
                 console.log(data);
-            }
+                var questions = data.results;
+                var triviaQuest = data.results;
+
+                for(var i=0; i < triviaQuest.length; i++) {
+                    console.log(triviaQuest[i]);
+                    $(".title").append("<p> Category: " + triviaQuest[i].category + ' </p>');
+                    $(".title").append("<p>Difficulty: " + triviaQuest[i].difficulty + ' </p>');
+                    $(".title").append("<p><strong>Question:</strong> " + triviaQuest[i].question + ' </p>');
+                    $(".answer").append("<p>Choice: " + triviaQuest[i].correct_answer + ' </p>');
+                    $(".answer").append("<p>Choice: " + triviaQuest[i].incorrect_answers[0] + ' </p>');
+                    $(".answer").append("<p>Choice: " + triviaQuest[i].incorrect_answers[1] + ' </p>');
+                    $(".answer").append("<p>Choice: " + triviaQuest[i].incorrect_answers[2] + ' </p>');
+                    $(".points").append("<p>Points: " + triviaQuest[i].score + ' </p>');
+                    
+                    document.write(data[successChoice]+"<br />");
+                }
+            });
         });
+
+        function updateScore(points){
+            button.click=funtion ()
+                const answer = input.val();
+                if(correct_answer){
+                    return true;
+                }
+                points++;
+            }
+        
+
+
     </script>
     <style>
         .box{
@@ -23,15 +51,51 @@
             border: 1px solid black;
             padding: 30px;
         }
+        .block{
+            display: inline-block;
+            vertical-align: top;
+            min-width: 45%;
+            text-align: center;
+        }
+        #headther{
+            border-bottom: 2px solid blue;
+        }
+        #wrapper{
+            margin: 0;
+            padding: auto;
+            max-width: 810px;
+            border:6px double blue;
+
+        }
+        #game{
+            padding: 30px;
+        }
     </style>
     <title>Trivia</title>
 </head>
 <body>
-    <div id="main">
-        <section class="game">
+    <div id="wrapper">
+        <div id="headther">
+            <h1 class="block">Trivia Night</h1>
+            <h2 class="block">Score: </h2>
+        </div>
+        <div id="game" class="title">
+                
+        
+        </div>
+        <div class="points">
 
-        </section>
+        </div>
+        <div class="answer">
+            <select action="answer">
+                <option></option>
+
+                <button>Submit</button>
+            </select>
+        
+           
+        </div>
+        
     </div>
-    
 </body>
 </html>
