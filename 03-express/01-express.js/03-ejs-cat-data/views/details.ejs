@@ -1,0 +1,28 @@
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Cats' Details</title>
+</head>
+<body>
+    <div id="main">
+        <div class="info">
+            <% for (var x in details) { %>
+            <h3><%= details[x].name %></h3>
+            <p><strong> Food:</strong> <%= details[x].food %></p>
+            <p><strong> Age:</strong> <%= details[x].age %></p>
+            <p><strong>Sleeping Habits:</strong>  <% for (var i = 0; i < details[x].sleepingspots.length; i++) { %>
+                <ul>
+                <li>
+                    <%= details[x].sleepingspots[i] %>
+                </li>
+                </ul>
+                <% } %></p>
+            <% } %>
+        </div>
+    </div>
+</body>
+</html>

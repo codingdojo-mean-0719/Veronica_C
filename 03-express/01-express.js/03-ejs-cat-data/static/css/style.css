@@ -1,0 +1,26 @@
+main{
+    min-width: 780px;
+    padding: 20px;
+    margin: 30px;
+}
+img{
+    width: 190px;
+    border: 1px solid black;
+}
+.box{
+    display: inline-block;
+    vertical-align: top;
+    margin: 10px;
+}
+.info{
+    max-width: 400px;
+    border: 2px solid darkcyan;
+    padding: 25px;
+    margin: 10px;
+}
+h1{
+    color: mediumslateblue;
+}
+h3{
+    color: rgb(10, 114, 114);
+}
