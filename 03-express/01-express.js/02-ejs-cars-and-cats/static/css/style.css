@@ -1,0 +1,12 @@
+main{
+    min-width: 680px;
+    padding: 20px;
+    margin: 30px;
+}
+img{
+    width: 190px;
+    border: 1px solid black;
+}
+h1{
+    color: mediumslateblue;
+}
