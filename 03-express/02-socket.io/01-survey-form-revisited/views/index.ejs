@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+    
+    <script type ="text/javascript">
+        $(document).ready(function (){
+            var socket = io.connect();
+            $('#survey_form').submit(function(e) {
+        		e.preventDefault();
+				socket.emit("posted_form", {
+				  	name: $('#name').val(),
+                    location: $('#location').val(),
+                    language: $('#language').val(),
+                    comment: $('#comment').val()
+                });
+			});
+			socket.on('current_message', function (data){
+			    $('#message').html("You emitted the following information to the server: " + JSON.stringify(data.response));
+			});
+			socket.on('random_number', function (data){
+			   $('#number').html("Your lucky number emitted by the server is : " + JSON.stringify(data.response));
+			});
+        });
+    </script>
+</head>
+<body>
+    <div id="wrapper">
+        <div id="message"></div>
+        <div id="number"></div>
+        <form action="" id="survey_form">
+            <div class="info">
+                <label for="">Your Name: </label>
+                <input type="text" name="name" id="name">
+            </div>
+            <div class="info">
+                <label for="">Dojo Location: </label>
+                <select name="location" id="location">
+                    <option value="Berkeley">Berkeley</option>
+                    <option value="Chicago">Chicago</option>
+                    <option value="Dallas">Dallas</option>
+                    <option value="Seattle">Seattle</option>
+                    <option value="Los Angeles">Los Angeles</option>
+                    <option value="Orange">Orange County</option>
+                </select>
+            </div>
+            <div class="info">
+            <label for="">Favorite Language: </label>
+                <select name="language" id="language">
+                    <option value="CSS">CSS</option>
+                    <option value="HTML">HTML</option>
+                    <option value="NodeJs">NodeJs</option>
+                    <option value="PHP">PHP</option>
+                    <option value="Python">Python</option>
+                    <option value="Javascript">Javascript</option>
+                </select>
+            </div>
+            <div class="info">
+                <label for="">Comment (optional) : </label>
+                <textarea name="comment" id="comment" ></textarea>
+            </div>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+</body>
+</html>
