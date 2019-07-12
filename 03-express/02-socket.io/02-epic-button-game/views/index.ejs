@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="/css/style.css">
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.2.0/socket.io.js" integrity="sha256-yr4fRk/GU1ehYJPAs8P4JlTgu0Hdsp4ZKrx8bDEDC3I=" crossorigin="anonymous"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+          var socket = io.connect();
+          $("#epicButton").click(function () {
+            socket.emit('button_click', { counter: 0});
+          });
+          socket.on('updated_counter', function (data) {
+            console.log(data.counter);
+            $('#count').html("<p>Times The Button Has Been Pressed: " + data.counter + "</p>");
+          });
+          $("#resetButton").click(function () {
+            socket.emit('reset_click');
+          })
+        })
+      </script>
+    </head>
+    
+<body>
+    <div id="wrapper">
+        <div id="count">
+            <p>The Button Has Been Pushed <%= counter %> time(s)</p>
+            <p>Push the button to update the count!</p>
+            <button id="epicButton" class="blue">Push The Epic Button</button>
+        </div>
+        <button id="resetButton" class="red">Reset Count</button>
+        
+    </div>
+</body>
+</html>
